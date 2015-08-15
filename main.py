@@ -1,5 +1,7 @@
 """`main` is the top level module for your Flask application."""
 
+import datetime
+
 # Import the Flask Framework
 from flask import Flask
 app = Flask(__name__)
@@ -7,10 +9,15 @@ app = Flask(__name__)
 # the App Engine WSGI application server.
 
 
+welcome_msg = """
+UTC: {utc_time} \n
+""".format(
+    utc_time = datetime.datetime.utcnow().strftime('%A, %Y-%m-%d %I:%M %p'))
+
 @app.route('/')
 def hello():
     """Return a friendly HTTP greeting."""
-    return 'Sup stud?'
+    return welcome_msg
 
 
 @app.errorhandler(404)
