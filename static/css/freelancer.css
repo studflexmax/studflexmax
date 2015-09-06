@@ -105,8 +105,17 @@ header .intro-text .name {
 }
 
 header .intro-text .skills {
+    display: inline-block;
     font-size: 1.25em;
     font-weight: 300;
+}
+
+header .intro-text .quote {
+    display: inline-block;
+    font-size: 1em;
+    font-weight: 200;
+    font-family: Georgia, "Times New Roman", "KaiTi", "楷体", STKaiti, "华文楷体", serif;
+    padding-top: 10px;
 }
 
 @media(min-width:768px) {
@@ -121,6 +130,11 @@ header .intro-text .skills {
 
     header .intro-text .skills {
         font-size: 1.75em;
+    }
+
+    header .intro-text .quote {
+        font-size: 1.5em;
+        padding-top: 20px;
     }
 }
 
