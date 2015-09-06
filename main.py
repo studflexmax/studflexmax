@@ -1,23 +1,23 @@
 """`main` is the top level module for your Flask application."""
 
 import datetime
+from pytz.gae import pytz
 
 # Import the Flask Framework
-from flask import Flask
+from flask import Flask, render_template
 app = Flask(__name__)
 # Note: We don't need to call run() since our application is embedded within
 # the App Engine WSGI application server.
 
 
-welcome_msg = """
-UTC: {utc_time} \n
-""".format(
-    utc_time = datetime.datetime.utcnow().strftime('%A, %Y-%m-%d %I:%M %p'))
-
 @app.route('/')
 def hello():
     """Return a friendly HTTP greeting."""
-    return welcome_msg
+    utc_time = datetime.datetime.now(pytz.utc)
+    local_time = utc_time.astimezone(pytz.timezone("America/Vancouver"))
+    return render_template(
+        "index.html",
+        current_time=local_time.strftime('%A, %Y-%m-%d %I:%M %p'))
 
 
 @app.errorhandler(404)
