@@ -93,6 +93,7 @@ header .container {
 header img {
     display: block;
     margin: 0 auto 20px;
+    max-height: 400px;
 }
 
 header .intro-text .name {
